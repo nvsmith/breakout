@@ -5,9 +5,9 @@ setCanvasStyles();
 var ctx = canvas.getContext("2d");
 // Ball Variables
 var x = canvas.width / 2; // start x-position
-var y = canvas.height / 2; // start y-position
+var y = canvas.height - 30; // start y-position
 var dx = (2 / 480) * canvas.width; // horizontal displacement
-var dy = (2 / 320) * canvas.height; // vertical displacement
+var dy = (-2 / 320) * canvas.height; // vertical displacement
 var ballRadius = (10 / 480) * canvas.width;
 var color = getRandomColor();
 // Paddle Variables
@@ -23,13 +23,12 @@ var brickColumnCount = 5;
 var brickWidth = (75 / 480) * canvas.width;
 var brickHeight = (20 / 320) * canvas.height;
 var brickPadding = (10 / 480) * canvas.width;
-var brickOffsetTop = (30 / 320) * canvas.height;
+var brickOffsetTop = (30 / 480) * canvas.height;
 var brickOffsetLeft = (30 / 480) * canvas.width;
 // Score & Lives Variables
 var score = 0;
 var lives = 3;
-// Divider Position
-var dividerOffsetTop = (25 / 320) * canvas.height
+
 // Bricks Positions
 var bricks = [];
 for (let c = 0; c < brickColumnCount; c++) {
@@ -103,16 +102,6 @@ function drawLives() {
   ctx.fillText("Lives: " + lives, canvas.width - 65, 20); // lives, x-coordinate, y-coordinate
 }
 
-// Divider
-function drawDivider() {
-  ctx.beginPath();
-  ctx.moveTo(0, dividerOffsetTop);
-  ctx.lineTo(canvas.width, dividerOffsetTop);
-  ctx.lineWidth = 3;
-  ctx.strokeStyle = "black";
-  ctx.stroke();
-}
-
 // Brick Drawing Logic
 function drawBricks() {
   for (let c = 0; c < brickColumnCount; c++) {
@@ -162,7 +151,6 @@ function drawPaddle() {
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawBricks();
-  drawDivider();
   drawBall();
   drawPaddle();
   drawScore();
@@ -175,7 +163,7 @@ function draw() {
     dx = -dx;
   }
 
-  if (y + dy - dividerOffsetTop < ballRadius) {
+  if (y + dy < ballRadius) {
     dy = -dy;
   } else if (y + dy > canvas.height - ballRadius) {
     if (x > paddleX && x < paddleX + paddleWidth) { // detect paddle
