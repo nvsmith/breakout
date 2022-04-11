@@ -184,7 +184,7 @@ function draw() {
     } else {
       lives--;
       if (!lives) {
-        //alert("Game Over");
+        alert("Game Over");
         document.location.reload();
       } else {
         // reset ball & paddle position for each attempt

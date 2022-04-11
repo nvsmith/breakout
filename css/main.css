@@ -12,6 +12,7 @@ html {
   color: #222;
   font-size: 1em;
   line-height: 1.4;
+  background-image: linear-gradient(black, indigo, violet, indigo, black);
 }
 
 /*
@@ -23,7 +24,7 @@ html {
  *
  * Customize the background color to match your design.
  */
-::-moz-selection {
+/* ::-moz-selection {
   background: #b3d4fc;
   text-shadow: none;
 }
@@ -31,8 +32,7 @@ html {
 ::selection {
   background: #b3d4fc;
   text-shadow: none;
-}
-
+} */
 /*
  * A better looking default horizontal rule
  */
@@ -158,10 +158,6 @@ textarea {
   {
   padding: 0;
   margin: 0;
-}
-
-body {
-  background-color: #64668a;
 }
 
 canvas {
