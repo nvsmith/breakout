@@ -80,7 +80,7 @@ function collisionDetection() {
           color = getRandomColor();
           score++;
           if (score == brickRowCount * brickColumnCount) {
-            //alert(`YOU WIN! \nFinal Score: ${score}`);
+            alert(`YOU WIN! \nFinal Score: ${score}`);
             document.location.reload();
           }
         }
@@ -169,7 +169,6 @@ function draw() {
   drawLives();
   collisionDetection();
 
-
   // Ball bouncing off the edges
   if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
     dx = -dx;
@@ -219,6 +218,11 @@ function draw() {
 } // end draw
 draw();
 
+// Message to start play.
+window.onload = function() {
+  alert("Ready to play BREAKOUT? Press the right & left arrow keys or use your mouse to move the paddle to hit the ball before it hits the ground.");
+}
+
 // Window & Canvas Resizing Logic
 window.onresize = function() {
   resizeCanvas();
@@ -226,8 +230,8 @@ window.onresize = function() {
 }
 
 function resizeCanvas() {
-  canvas.width = window.innerWidth * 0.95;
-  canvas.height = window.innerHeight * 0.95;
+  canvas.width = window.innerWidth * 0.90;
+  canvas.height = window.innerHeight * 0.90;
 }
 
 function setCanvasStyles() {
